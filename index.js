@@ -57,17 +57,45 @@ function displayWeatherInfo(data){
 
     cityDisplay.textContent = city; // retrieves destructured city data from data
     tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`
+    humidityDisplay.textContent = `Humidity: ${humidity}`; // retrieves destructured humidity data from data
+    descDisplay.textContent = description; // retrieves destructured description data from data
+    weatherEmoji.textContent = getWeatherEmoji(id);
 
     cityDisplay.classList.add("cityDisplay"); // adds css styling
     tempDisplay.classList.add("tempDisplay");
+    humidityDisplay.classList.add("humidityDisplay");
+    descDisplay.classList.add("descDisplay");
+    weatherEmoji.classList.add("weatherEmoji");
 
     card.appendChild(cityDisplay); // adds the city display to the card
     card.appendChild(tempDisplay); // adds the temp display to the card
+    card.appendChild(humidityDisplay); 
+    card.appendChild(descDisplay); // adds the description display to the card
+    card.appendChild(weatherEmoji); // adds the weather emoji display to the card
 
 
 }
 
-function getWeatherEmoji(weatherId){
+function getWeatherEmoji(weatherID){
+
+    switch(true){
+        case (weatherID >= 200 && weatherID < 300):
+            return "⛈";
+        case (weatherID >= 300 && weatherID < 400):
+            return "🌧";
+        case (weatherID >= 500 && weatherID < 600):
+            return "🌧";
+        case (weatherID >= 600 && weatherID < 700):
+            return "❄️";
+        case (weatherID >= 700 && weatherID < 800):
+            return "😶‍🌫️";    
+        case (weatherID === 800):
+            return "☀️";      
+        case (weatherID >= 801 && weatherID < 810):
+            return "☁️";
+        default:
+            return "🤷🏻";
+    }
 
 }
 
