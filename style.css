@@ -32,11 +32,23 @@ button[type = "submit"]{
 button[type = "submit"]:hover{
     background-color: rgb(196, 161, 90);
 }
+.layout{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+#map {
+    padding-top: 50px;
+    width: 100%;
+    height: 400px; 
+    aspect-ratio: 3.5/ 1;
+    margin: 20px 0;
+}
 .card{
     background: linear-gradient(180deg, hsl(236, 100%, 78%), hsl(109, 66%, 63%));
     padding: 50px;
     box-shadow: 2px 2px 5px hsl(0, 0%, 0%, 0.5);
-    min-width: 300px;
+    min-width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;

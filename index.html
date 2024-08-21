@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App by Enoch Ngan</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.6.5/ol.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.6.5/ol.js"></script>
 </head>
 <body>
     <div class="intro">
@@ -15,8 +17,12 @@
         <input type="text" class="cityInput" placeholder="Enter city">
         <button type="submit">Get Weather</button>
     </form>
-
-    <div class="card" style="display:none">
+    <div class="layout">
+        <div class="card" style="display:none">
+        </div>
+    
+        <div id="map" class="map">
+        </div>
     </div>
 
     <script src="index.js"></script>

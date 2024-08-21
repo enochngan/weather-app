@@ -1,8 +1,24 @@
-
 const weatherForm = document.querySelector(".weatherForm");
 const cityInput = document.querySelector(".cityInput");
 const card = document.querySelector(".card");
 const apiKey = "d6a5215dabc9526c2db8ba810ed2f205";
+
+let map;
+
+document.addEventListener('DOMContentLoaded', () => {
+    map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([0, 0]), // Initial center position
+            zoom: 2,
+        })
+    });
+});
 
 weatherForm.addEventListener("submit", async event => {
 
@@ -43,6 +59,7 @@ async function getWeatherData(city){
 function displayWeatherInfo(data){
 
     const {name: city,
+           coord: {lon, lat},
            main: {temp, humidity}, 
            weather: [{description, id}]} = data;
 
@@ -72,8 +89,11 @@ function displayWeatherInfo(data){
     card.appendChild(humidityDisplay); 
     card.appendChild(descDisplay); // adds the description display to the card
     card.appendChild(weatherEmoji); // adds the weather emoji display to the card
-
-
+    
+    if (map){
+        map.getView().setCenter(ol.proj.fromLonLat([lon, lat]));
+        map.getView().setZoom(10); 
+    }
 }
 
 function getWeatherEmoji(weatherID){
